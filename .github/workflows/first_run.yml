@@ -13,14 +13,13 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Clone from Aur
-        if: ${{ ! inputs.debug_enabled }}
         shell: bash
         run: |
           repo=$(cut -d "/" -f2 <<< ${{ github.repository }})
           git clone https://aur.archlinux.org/$(cut -d "/" -f2 <<< $repo).git
           rm -rf $repo/.git
 
-      - name: Send Hooks BigLinux Build Package
+      - name: SelfRemove WorkFlow
         shell: bash
         run: |
           if [ "$(cut -d "/" -f2 <<< ${{ github.repository }})" != "aurTemplate" ];then
