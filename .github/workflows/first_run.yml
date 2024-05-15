@@ -11,12 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup TMATE Session
-        uses: mxschmitt/action-tmate@v3
+
+      - name: Clone from Aur
+        if: ${{ ! inputs.debug_enabled }}
+        shell: bash
+        run: |
+          repo=$(cut -d "/" -f2 <<< ${{ github.repository }})
+          git clone https://aur.archlinux.org/$(cut -d "/" -f2 <<< $repo).git
+          rm -rf $repo/.git
+
       - name: Send Hooks BigLinux Build Package
         shell: bash
         run: |
-          rm .github/workflows/teste2.yml
+          if [ "$(cut -d "/" -f2 <<< ${{ github.repository }})" != "aurTemplate" ];then
+            rm .github/workflows/first_run.yml
+          fi
 
       - name: Update github
         run: |
