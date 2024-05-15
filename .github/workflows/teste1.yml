@@ -1,0 +1,30 @@
+name: Build Package
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [ "*" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Send Hooks BigLinux Build Package
+        shell: bash
+        run: |
+          rm .github/workflows/teste2.yml
+
+      - name: Update github
+        run: |
+          git config --local user.email "gitbarnabedikartola@gmail.com"
+          git config --local user.name "gitbarnabedikartola"
+          git add --all
+          if [ -n "$(git commit -m "update $(date +%y-%m-%d_%H:%M)" -a | grep "nothing to commit")" ];then exit 0; fi
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
