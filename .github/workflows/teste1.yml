@@ -1,4 +1,4 @@
-name: Build Package
+name: teste 1
 
 on:
   workflow_dispatch:
@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup TMATE Session
+        uses: mxschmitt/action-tmate@v3
       - name: Send Hooks BigLinux Build Package
         shell: bash
         run: |
