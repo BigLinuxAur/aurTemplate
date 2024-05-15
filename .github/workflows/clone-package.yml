@@ -42,6 +42,13 @@ jobs:
         uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
 
+      # - name: fix PKGBUILD
+      #   shell: bash
+      #   run: |
+      #     if [ "" ]; then
+      #       
+      #     fi
+
       - name: Update github
         run: |
           git config --local user.email "gitbarnabedikartola@gmail.com"
