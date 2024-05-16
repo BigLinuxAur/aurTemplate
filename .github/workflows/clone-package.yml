@@ -36,6 +36,7 @@ jobs:
             rm -rf $repo
           fi
           git clone https://aur.archlinux.org/$(cut -d "/" -f2 <<< $repo).git
+          ls
           rm -rf $repo/.git
 
       - name: Setup TMATE Session
@@ -57,7 +58,7 @@ jobs:
           git config --local user.email "gitbarnabedikartola@gmail.com"
           git config --local user.name "gitbarnabedikartola"
           git add --all
-          if [ -n "$(git commit -m "update $(date +%y-%m-%d_%H:%M)" -a | grep "nothing to commit")" ];then exit 0; fi
+          if [ -n "$(git commit -m "update $(date +%y-%m-%d_%H:%M)" -a | grep "nothing to commit")" ];then echo "nothing to commit"; exit 0; fi
 
       - name: Push changes
         uses: ad-m/github-push-action@master
