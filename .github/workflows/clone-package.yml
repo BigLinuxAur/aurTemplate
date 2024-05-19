@@ -53,6 +53,7 @@ jobs:
       #     fi
       #     sed -i "/depends=/s/)/ \'xpto\')/" PKGBUILD
       #     sed -i "/makedepends=/s/)/ \'xpto\')/" PKGBUILD
+      #     sed -i '/depends=/!b; :a; n; a\    xpto' PKGBUILD
 
       - name: Update github
         shell: bash
