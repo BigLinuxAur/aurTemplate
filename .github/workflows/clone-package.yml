@@ -48,9 +48,6 @@ jobs:
       #   run: |
       #     gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
       #     cd $gitfolder
-      #     if [ "" ]; then
-      #       
-      #     fi
       #     sed -i "/\bdepends=/s/(/ \('xpto\' /" PKGBUILD
       #     sed -i "/makedepends=/s/(/ \('xpto\' /" PKGBUILD
       #     sed -i '/\bdepends=/!b; :a; n; a\    xpto' PKGBUILD
